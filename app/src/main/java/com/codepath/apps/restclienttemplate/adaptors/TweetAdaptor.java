@@ -1,6 +1,7 @@
 package com.codepath.apps.restclienttemplate.adaptors;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.Target;
 import com.codepath.apps.restclienttemplate.GlideApp;
 import com.codepath.apps.restclienttemplate.R;
 import com.codepath.apps.restclienttemplate.TimeFormatter;
@@ -69,15 +73,16 @@ public class TweetAdaptor extends  RecyclerView.Adapter<TweetAdaptor.ViewHolder>
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView ivProfilePic;
+        ImageView ivProfilePic, ivMedia;
         TextView tvUsername,tvBody,tvRelAge;
 
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            ivMedia = itemView.findViewById(R.id.ivMedia);
             ivProfilePic = itemView.findViewById(R.id.ivProfilePic);
-            tvUsername = itemView.findViewById(R.id.tvUsername);
+            tvUsername = itemView.findViewById(R.id.tvName);
             tvRelAge = itemView.findViewById(R.id.tvRelAge);
             tvBody = itemView.findViewById(R.id.tvBody);
 
@@ -86,6 +91,19 @@ public class TweetAdaptor extends  RecyclerView.Adapter<TweetAdaptor.ViewHolder>
         public void bind(Tweet tweet)
         {
 
+
+            if (tweet.Media != "")
+            {
+                int radius = 1,margin=2;
+                GlideApp.with(context).load(tweet.Media).apply(new RequestOptions().transforms(new RoundedCorners(30))).override(500,400).into(ivMedia);
+                ivMedia.setVisibility(View.VISIBLE);
+                Log.i("MediaLoading","tweet " + tweet.id + " has media : " + tweet.Media);
+            }
+            else
+            {
+                ivMedia.setVisibility(View.GONE);
+                Log.i("MediaLoading ERROR","tweet " + tweet.id + " has media : " + tweet.Media);
+            }
             tvRelAge.setText(TimeFormatter.getTimeDifference(tweet.timestamp));
             tvBody.setText(tweet.body);
             tvUsername.setText(tweet.user.name);

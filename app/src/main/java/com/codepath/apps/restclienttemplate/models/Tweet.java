@@ -1,6 +1,8 @@
 // models/Tweet.java
 package com.codepath.apps.restclienttemplate.models;
 
+import android.util.Log;
+
 import androidx.room.ColumnInfo;
 import androidx.room.Embedded;
 
@@ -24,6 +26,9 @@ public class Tweet {
     @ColumnInfo
     public String body;
 
+    @ColumnInfo
+    public String Media = "";
+
     // Use @Embedded to keep the column entries as part of the same table while still
     // keeping the logical separation between the two objects.
     @Embedded
@@ -34,6 +39,17 @@ public class Tweet {
     public Tweet(JSONObject object){
         try {
             this.id = object.getLong("id");
+
+            try
+            {
+                Media = object.getJSONObject("entities").getJSONArray("media").getJSONObject(0).getString("media_url_https");
+                Log.i("JSON_Media", Media);
+
+            } catch (JSONException e)
+            {
+                Log.i("JSON_Media ERROR", Media);
+                Media = "";
+            }
             this.user = User.parseJSON(object.getJSONObject("user"));
             this.timestamp = object.getString("created_at");
             this.body = object.getString("text");
