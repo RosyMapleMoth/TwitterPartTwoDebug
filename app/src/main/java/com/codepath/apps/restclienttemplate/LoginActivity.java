@@ -1,7 +1,9 @@
 package com.codepath.apps.restclienttemplate;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 
@@ -9,10 +11,10 @@ import com.codepath.apps.restclienttemplate.models.SampleModel;
 import com.codepath.apps.restclienttemplate.models.SampleModelDao;
 import com.codepath.oauth.OAuthLoginActionBarActivity;
 
-public class LoginActivity extends OAuthLoginActionBarActivity<RestClient> {
+public class LoginActivity extends OAuthLoginActionBarActivity<ChirpClient> {
 
 	SampleModelDao sampleModelDao;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -21,7 +23,7 @@ public class LoginActivity extends OAuthLoginActionBarActivity<RestClient> {
 		final SampleModel sampleModel = new SampleModel();
 		sampleModel.setName("CodePath");
 
-		sampleModelDao = ((RestApplication) getApplicationContext()).getMyDatabase().sampleModelDao();
+		sampleModelDao = ((ChirpApplication) getApplicationContext()).getMyDatabase().sampleModelDao();
 
 		AsyncTask.execute(new Runnable() {
 			@Override
@@ -42,9 +44,11 @@ public class LoginActivity extends OAuthLoginActionBarActivity<RestClient> {
 	// OAuth authenticated successfully, launch primary authenticated activity
 	// i.e Display application "homepage"
 	@Override
-	public void onLoginSuccess() {
-		// Intent i = new Intent(this, PhotosActivity.class);
-		// startActivity(i);
+	public void onLoginSuccess()
+	{
+		Log.i("login", "you have logged in" );
+		Intent i = new Intent(this, TimelineActivity.class);
+		startActivity(i);
 	}
 
 	// OAuth authentication flow failed, handle the error

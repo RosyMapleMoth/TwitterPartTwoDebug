@@ -12,11 +12,11 @@ import com.facebook.stetho.Stetho;
  * including the image cache in memory and on disk. This also adds a singleton
  * for accessing the relevant rest client.
  *
- *     RestClient client = RestApplication.getRestClient(Context context);
+ *     ChirpClient client = ChirpApplication.getRestClient(Context context);
  *     // use client to send requests to API
  *
  */
-public class RestApplication extends Application {
+public class ChirpApplication extends Application {
 
     MyDatabase myDatabase;
 
@@ -27,13 +27,10 @@ public class RestApplication extends Application {
 		// fallbackToDestructiveMigration()
         myDatabase = Room.databaseBuilder(this, MyDatabase.class,
                 MyDatabase.NAME).fallbackToDestructiveMigration().build();
-
-        // use chrome://inspect to inspect your SQL database
-        Stetho.initializeWithDefaults(this);
     }
 
-    public static RestClient getRestClient(Context context) {
-        return (RestClient) RestClient.getInstance(RestClient.class, context);
+    public static ChirpClient getRestClient(Context context) {
+        return (ChirpClient) ChirpClient.getInstance(ChirpClient.class, context);
     }
 
     public MyDatabase getMyDatabase() {
