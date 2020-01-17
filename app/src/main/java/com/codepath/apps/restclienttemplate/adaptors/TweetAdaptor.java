@@ -10,12 +10,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+import com.codepath.apps.restclienttemplate.GlideApp;
 import com.codepath.apps.restclienttemplate.R;
+import com.codepath.apps.restclienttemplate.TimeFormatter;
 import com.codepath.apps.restclienttemplate.models.Tweet;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 public class TweetAdaptor extends  RecyclerView.Adapter<TweetAdaptor.ViewHolder> {
 
@@ -64,7 +70,7 @@ public class TweetAdaptor extends  RecyclerView.Adapter<TweetAdaptor.ViewHolder>
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView ivProfilePic;
-        TextView tvUsername,tvBody;
+        TextView tvUsername,tvBody,tvRelAge;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -72,15 +78,18 @@ public class TweetAdaptor extends  RecyclerView.Adapter<TweetAdaptor.ViewHolder>
 
             ivProfilePic = itemView.findViewById(R.id.ivProfilePic);
             tvUsername = itemView.findViewById(R.id.tvUsername);
+            tvRelAge = itemView.findViewById(R.id.tvRelAge);
             tvBody = itemView.findViewById(R.id.tvBody);
 
         }
 
         public void bind(Tweet tweet)
         {
+
+            tvRelAge.setText(TimeFormatter.getTimeDifference(tweet.timestamp));
             tvBody.setText(tweet.body);
             tvUsername.setText(tweet.user.name);
-            Glide.with(context).load(tweet.user.profilePicture).into(ivProfilePic);
+            GlideApp.with(context).load(tweet.user.profilePicture).override(400,400).apply(RequestOptions.circleCropTransform()).into(ivProfilePic);
         }
     }
 

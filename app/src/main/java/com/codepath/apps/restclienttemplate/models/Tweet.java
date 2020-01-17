@@ -33,6 +33,7 @@ public class Tweet {
     // Add a constructor that creates an object from the JSON response
     public Tweet(JSONObject object){
         try {
+            this.id = object.getLong("id");
             this.user = User.parseJSON(object.getJSONObject("user"));
             this.timestamp = object.getString("created_at");
             this.body = object.getString("text");

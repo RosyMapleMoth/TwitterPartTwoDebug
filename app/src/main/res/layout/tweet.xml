@@ -40,4 +40,16 @@
         android:layout_toEndOf="@+id/ivProfilePic"
         android:text="TextView"
         tools:text="This is the text of the body" />
+
+    <TextView
+        android:id="@+id/tvRelAge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tvUsername"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="0dp"
+        android:text="TextView" />
 </RelativeLayout>

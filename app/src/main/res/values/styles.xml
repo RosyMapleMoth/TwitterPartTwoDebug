@@ -9,8 +9,14 @@
     </style>
 
     <!-- Application theme. -->
-    <style name="AppTheme" parent="AppBaseTheme">
-        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+
     </style>
+
+
+    <style name="TwitterActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:colorBackground">@color/twitter_blue</item>
+    </style>
+
 
 </resources>
