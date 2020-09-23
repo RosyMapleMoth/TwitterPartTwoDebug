@@ -50,6 +50,9 @@ public class ChirpClient extends OAuthBaseClient {
 		String apiUrl = getApiUrl("statuses/home_timeline.json");
 		RequestParams params = new RequestParams();
 		params.put("page", String.valueOf(page));
+
+		//asas
+		//fffff
 		client.get(apiUrl, params, handler);
 	}
 
