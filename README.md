@@ -1,7 +1,7 @@
 # Twitter Part 1 Debugging challenge
 
 ## Compare with your version of Twitter part 1 
-Don't be afrade to review projects you have made if you are struggling.
+Don't be afraid to review projects you have made if you are struggling.
 
 
 ## Debugging strategies
