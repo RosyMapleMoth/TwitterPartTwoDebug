@@ -1,19 +1,16 @@
 // models/Tweet.java
 package com.codepath.apps.restclienttemplate.models;
 
-import android.util.Log;
-
-import androidx.room.ColumnInfo;
-import androidx.room.Embedded;
-
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+
+import androidx.room.ColumnInfo;
+import androidx.room.Embedded;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 @Entity
 public class Tweet {
@@ -39,17 +36,6 @@ public class Tweet {
     public Tweet(JSONObject object){
         try {
             this.id = object.getLong("id");
-
-            try
-            {
-                Media = object.getJSONObject("entities").getJSONArray("media").getJSONObject(0).getString("media_url_https");
-                Log.i("JSON_Media", Media);
-
-            } catch (JSONException e)
-            {
-                Log.i("JSON_Media ERROR", Media);
-                Media = "";
-            }
             this.user = User.parseJSON(object.getJSONObject("user"));
             this.timestamp = object.getString("created_at");
             this.body = object.getString("text");

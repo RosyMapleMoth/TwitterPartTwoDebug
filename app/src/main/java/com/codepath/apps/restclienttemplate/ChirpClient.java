@@ -5,11 +5,8 @@ import android.content.Context;
 import com.codepath.asynchttpclient.RequestParams;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 import com.codepath.oauth.OAuthBaseClient;
-import com.github.scribejava.apis.FlickrApi;
 import com.github.scribejava.apis.TwitterApi;
 import com.github.scribejava.core.builder.api.BaseApi;
-
-import java.util.BitSet;
 
 /*
  * 
@@ -50,25 +47,24 @@ public class ChirpClient extends OAuthBaseClient {
 		String apiUrl = getApiUrl("statuses/home_timeline.json");
 		RequestParams params = new RequestParams();
 		params.put("page", String.valueOf(page));
-
-		//asas
-		//fffff
 		client.get(apiUrl, params, handler);
 	}
 
 
+	/*
+	part of twitter part 2
 	public void postTweet(String body, JsonHttpResponseHandler handler) {
 		String apiUrl = getApiUrl("statuses/update.json");
 		RequestParams params = new RequestParams();
 		params.put("status", body);
 		client.post(apiUrl, String.valueOf(params), handler);
 	}
+	*/
 
 	public void getNextPageOfTweets( long maxId, JsonHttpResponseHandler handler) {
 		String apiUrl = getApiUrl("statuses/home_timeline.json");
 		RequestParams params = new RequestParams();
 		params.put("count", 25);
-		params.put("max_id", maxId);
 		client.get(apiUrl, params, handler);
 	}
 

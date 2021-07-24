@@ -1,27 +1,22 @@
 package com.codepath.apps.restclienttemplate;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.os.Bundle;
+import android.util.Log;
+
+import com.codepath.apps.restclienttemplate.adaptors.TweetAdaptor;
+import com.codepath.apps.restclienttemplate.models.Tweet;
+import com.codepath.apps.restclienttemplate.supportLibs.EndlessRecyclerViewScrollListener;
+import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
+
+import org.json.JSONArray;
+
+import java.util.ArrayList;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-
-import com.codepath.apps.restclienttemplate.adaptors.TweetAdaptor;
-import com.codepath.apps.restclienttemplate.models.Tweet;
-import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
-import com.facebook.stetho.inspector.jsonrpc.JsonRpcException;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-
-import java.util.ArrayList;
-
 import okhttp3.Headers;
 
 public class TimelineActivity extends AppCompatActivity {
@@ -63,7 +58,6 @@ public class TimelineActivity extends AppCompatActivity {
             @Override
             public void onRefresh() {
                 populateHomeTimeline(0);
-                swipeRefreshLayout.setRefreshing(false);
             }
         });
 
@@ -86,7 +80,7 @@ public class TimelineActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(int statusCode, Headers headers, String response, Throwable throwable) {
-
+                Log.e("TimelineActivity", "LoadMoreData Failed with response " + response);
             }
         });
     }
@@ -108,7 +102,7 @@ public class TimelineActivity extends AppCompatActivity {
             @Override
             public void onFailure(int statusCode, Headers headers, String response, Throwable throwable)
             {
-                Log.e("populateHomeTimeline", "unable to populate hometimeline exit with response : " + response);
+                Log.e("populateHomeTimeline", "unable to populate home timeline exit with response : " + response);
             }
         });
 

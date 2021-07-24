@@ -3,9 +3,9 @@ package com.codepath.apps.restclienttemplate;
 import android.app.Application;
 import android.content.Context;
 
-import androidx.room.Room;
+import com.codepath.apps.restclienttemplate.models.MyDatabase;
 
-import com.facebook.stetho.Stetho;
+import androidx.room.Room;
 
 /*
  * This is the Android application itself and is used to configure various settings

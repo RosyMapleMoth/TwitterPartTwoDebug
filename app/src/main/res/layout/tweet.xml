@@ -2,9 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/rvTweetItem"
+    android:id="@+id/tvBody"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:layout_marginStart="5dp"
     android:layout_marginTop="2.5dp"
     android:layout_marginEnd="5dp"
@@ -31,7 +31,7 @@
         tools:text="Blue F Magic" />
 
     <TextView
-        android:id="@+id/tvBody"
+        android:id="@+id/rvTweetItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvName"
@@ -55,50 +55,6 @@
         android:layout_toEndOf="@+id/tvHandal"
         tools:text="12h" />
 
-    <ImageView
-        android:id="@+id/ivMedia"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tvBody"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="0dp"
-        android:layout_toEndOf="@+id/ivProfilePic"
-        tools:srcCompat="@tools:sample/avatars" />
-
-    <Button
-        android:id="@+id/btnRetweet"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_below="@+id/ivMedia"
-        android:layout_alignStart="@+id/tvBody"
-        android:layout_marginStart="-7dp"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/ic_vector_retweet"
-        android:backgroundTint="@color/twitter_blue" />
-
-    <Button
-        android:id="@+id/btnLike"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_below="@+id/ivMedia"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="5dp"
-        android:layout_toEndOf="@+id/btnComment"
-        android:background="@drawable/ic_vector_heart"
-        android:backgroundTint="@color/twitter_blue" />
-
-    <Button
-        android:id="@+id/btnComment"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_below="@+id/ivMedia"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="5dp"
-        android:layout_toEndOf="@+id/btnRetweet"
-        android:background="@drawable/ic_vector_compose"
-        android:backgroundTint="@color/twitter_blue" />
 
     <TextView
         android:id="@+id/tvHandal"
@@ -107,6 +63,6 @@
         android:layout_marginStart="7dp"
         android:layout_toEndOf="@+id/tvName"
         android:textColor="@color/inline_action"
-        tools:text="@BlueMagic" />
+        tools:text="" />
 
 </RelativeLayout>

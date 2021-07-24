@@ -1,13 +1,11 @@
-package com.codepath.apps.restclienttemplate;
+package com.codepath.apps.restclienttemplate.models;
+
+import java.util.List;
 
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
-
-import com.codepath.apps.restclienttemplate.models.Tweet;
-
-import java.util.List;
 
 @Dao
 public interface TwitterDao {
