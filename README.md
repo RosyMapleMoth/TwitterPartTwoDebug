@@ -1,4 +1,4 @@
-# This Assignment is no longer used in CodePath's Curriclum, and will no longer work over all following X closing its API 
+# This Debugging project is no longer used in CodePath's curriculum, and will no longer work following X closing its API 
 
 
 
