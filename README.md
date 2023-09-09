@@ -1,4 +1,4 @@
-# This Debugging project is no longer used in CodePath's curriculum, and will no longer work following X closing its API 
+Please note that this debugging project is no longer used in CodePath's curriculum, and will no longer work following X closing its API 
 
 
 
