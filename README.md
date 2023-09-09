@@ -1,3 +1,7 @@
+# This Assignment is no longer used in CodePath's Curriclum, and will no longer work over all following X closing its API 
+
+
+
 # Twitter Part 1 Debugging challenge
 
 ## Compare with your version of Twitter part 1 
